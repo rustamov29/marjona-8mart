@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>For My❤️</title>
+  <style>
+    :root{
+      --bg1:#ffdde1;
+      --bg2:#ee9ca7;
+      --card:rgba(255,255,255,.78);
+      --text:#1f1f1f;
+      --muted:#444;
+      --accent:#ff2e63;
+      --shadow: 0 18px 55px rgba(0,0,0,.18);
+      --r: 22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background: radial-gradient(1100px 700px at 20% 10%, #fff 0%, transparent 60%),
+                  linear-gradient(135deg, var(--bg1), var(--bg2));
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+    .wrap{max-width:980px;margin:0 auto;padding:26px 16px 60px; position:relative; z-index:2;}
+    header{text-align:center;margin-top:10px}
+    .badge{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:10px 14px; border-radius:999px;
+      background: rgba(255,255,255,.55);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 25px rgba(0,0,0,.08);
+      font-weight:650;
+    }
+    h1{margin:14px 0 6px; font-size: clamp(28px, 4vw, 46px);}
+    .sub{margin:0 auto; max-width:760px; color:var(--muted); font-size: clamp(14px, 2vw, 18px); line-height:1.55;}
+
+    .grid{margin-top:22px; display:grid; grid-template-columns: 1.2fr .8fr; gap:16px;}
+    @media (max-width: 860px){ .grid{grid-template-columns: 1fr;} }
+
+    .card{
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.75);
+      backdrop-filter: blur(10px);
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .hero{padding:0; overflow:hidden; position:relative;}
+    .hero img{width:100%; display:block; aspect-ratio: 16/10; object-fit: cover;}
+    .overlay{position:absolute; inset:0; background: linear-gradient(180deg, transparent 20%, rgba(0,0,0,.38) 100%);}
+    .heroText{position:absolute; left:16px; right:16px; bottom:14px; color:#fff;}
+    .heroText .to{font-size:14px; opacity:.95}
+    .heroText .name{margin-top:6px; font-size: clamp(22px, 3.2vw, 34px); font-weight: 900; line-height:1.05;}
+    .heroText .date{margin-top:6px; font-size: 13px; opacity:.9}
+
+    .msg h2{margin:2px 0 10px; font-size:20px;}
+    .msg p{margin:0 0 10px; color:var(--muted); line-height:1.75; font-size:15.5px;}
+    .quote{
+      margin-top: 14px;
+      padding: 14px;
+      border-left: 4px solid var(--accent);
+      background: rgba(255,255,255,.55);
+      border-radius: 14px;
+      color:#2b2b2b;
+      line-height: 1.65;
+      font-style: italic;
+    }
+
+    .actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px;}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 12px 14px;
+      border-radius: 14px;
+      text-decoration:none;
+      font-weight: 750;
+      box-shadow: 0 10px 24px rgba(0,0,0,.12);
+      border: 0;
+      cursor:pointer;
+    }
+    .primary{background: var(--accent); color:#fff;}
+    .ghost{background:#fff; color:#111;}
+
+    .gallery h2{margin:2px 0 12px; font-size:20px;}
+    .photos{display:grid; grid-template-columns: repeat(3, 1fr); gap:10px;}
+    @media (max-width:520px){ .photos{grid-template-columns: repeat(2, 1fr);} }
+    .ph{border-radius:16px; overflow:hidden; aspect-ratio:1/1; border:1px solid rgba(255,255,255,.7); cursor:pointer; transition:transform .15s ease;}
+    .ph:hover{transform: translateY(-2px);}
+    .ph img{width:100%; height:100%; object-fit: cover; display:block;}
+
+    /* modal */
+    .modal{position:fixed; inset:0; display:none; place-items:center; background: rgba(0,0,0,.55); z-index:50; padding:16px;}
+    .modal.open{display:grid;}
+    .modalContent{max-width:900px; width:100%; border-radius:18px; overflow:hidden; background:#000; box-shadow: 0 20px 80px rgba(0,0,0,.35); position:relative;}
+    .modalContent img{width:100%; height:auto; display:block;}
+    .close{position:absolute; top:10px; right:10px; width:40px; height:40px; display:grid; place-items:center; background: rgba(255,255,255,.92); border-radius:999px; cursor:pointer; user-select:none;}
+
+    /* floating hearts */
+    .heart{position:fixed; bottom:-40px; font-size:18px; opacity:.65; animation: floatUp linear forwards; pointer-events:none; z-index:1; filter: drop-shadow(0 8px 12px rgba(0,0,0,.15));}
+    @keyframes floatUp{
+      from { transform: translateY(0) translateX(0) scale(1); opacity:0; }
+      10% { opacity:.65; }
+      to { transform: translateY(-120vh) translateX(var(--drift)) scale(var(--scale)); opacity:0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="badge">🌸 8-Mart • From Inomjon</div>
+      <h1>Happy Women’s Day, Marjona ❤️</h1>
+      <p class="sub">
+        This website was created for the most precious person in my life — <b>my love, Marjona</b> 💕
+      </p>
+    </header>
+
+    <section class="grid">
+      <!-- HERO (6-rasm katta) -->
+      <div class="card hero">
+        <img src="photo_2026-02-28_14-12-24.jpg" alt="Marjona" />
+        <div class="overlay"></div>
+        <div class="heroText">
+          <div class="to">For you 💌</div>
+          <div class="name">Marjona, my sweetheart ❤️</div>
+          <div class="date" id="todayLine"></div>
+        </div>
+      </div>
+
+      <!-- MATN (YANGILANGAN) -->
+      <div class="card msg">
+        <h2>My message 💗</h2>
+
+        <p>
+          This website was created for the most precious person in my life — <b>my love, Marjona</b> 💕
+          Happy Women’s Day, my sweetheart 🌸❤️
+        </p>
+
+        <p>
+          Since you left for Tashkent, I’ve been thinking a lot about what kind of gift I could give you 💭✨
+          Even though I can’t give it to you in person, I still wanted to send you something straight from my heart ❤️
+          If you found this website and are reading it now, just know that it makes me truly happy 😊💌
+        </p>
+
+        <p>
+          I love you so much… 🤍 but sometimes I can’t fully express what’s inside my heart.
+          I don’t always know why — maybe it’s my lack of attention, maybe something I don’t even understand myself.
+          But one thing is certain: the love I have for you has never become smaller ❤️‍🔥
+        </p>
+
+        <p>
+          I don’t love you only because you are beautiful… 🌷
+          I love your <b>character</b>, your <b>smile</b>, your <b>voice</b>, and even your smallest habits 🥰
+          And this love will not change with time ⏳
+          Even when you grow older, even when you’re tired, even when you stop caring about your appearance —
+          you will still be the most precious person to me 💞
+        </p>
+
+        <p>
+          I chose you ❤️
+          And because of that, giving up on you or thinking about other girls is something that could never happen in my world 🚫💔
+        </p>
+
+        <p>
+          But honestly… every time you say “let’s break up,” my heart stops for a moment 💔
+          Because hearing that from the person I love more than myself is something very painful for me… 😔
+        </p>
+
+        <p>
+          Many of my friends are constantly called and texted by the girls who love them 📱💬
+          I’m not saying you are not like that.
+          I just believe that our moments will come too… ✨
+          And until then, I will wait. I will be patient 🤍
+          Because I cannot easily walk away from you.
+        </p>
+
+        <div class="quote">
+          Please remember this: <b>You are my first and my last love.</b> ❤️♾️
+        </div>
+
+        <p style="margin-top:12px;">
+          And yes… right now, I’m waiting for your call 📞💕
+        </p>
+
+        <div class="actions">
+          <!-- ✅ SHU YERGA O'Z RAQAMINGNI YOZ: +998... -->
+          <a class="btn primary" href="tel:+998976911012">📞 Call me</a>
+          <button class="btn ghost" id="surpriseBtn">✨ Surprise</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALEREYA: hamma rasm -->
+    <section class="card gallery" style="margin-top:16px;">
+      <h2>Gallery 📸</h2>
+      <div class="photos" id="photos">
+        <div class="ph"><img src="photo_2026-02-28_13-21-05.jpg" alt="1"></div>
+        <div class="ph"><img src="photo_2026-02-28_14-12-49.jpg" alt="2"></div>
+        <div class="ph"><img src="photo_2026-02-28_14-12-38.jpg" alt="3"></div>
+        <div class="ph"><img src="photo_2026-02-28_14-12-34.jpg" alt="4"></div>
+        <div class="ph"><img src="photo_2026-02-28_14-12-28.jpg" alt="5"></div>
+        <div class="ph"><img src="photo_2026-02-28_14-12-24.jpg" alt="6"></div>
+      </div>
+    </section>
+
+    <p style="text-align:center; margin-top:16px; color:rgba(0,0,0,.55);">
+      Made with ❤️ by Inomjon
+    </p>
+  </div>
+
+  <!-- modal -->
+  <div class="modal" id="modal">
+    <div class="modalContent">
+      <div class="close" id="close">✕</div>
+      <img id="modalImg" src="" alt="preview">
+    </div>
+  </div>
+
+  <script>
+    // date
+    const d = new Date();
+    document.getElementById('todayLine').textContent =
+      d.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+
+    // hearts
+    function spawnHeart(){
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.textContent = Math.random() > 0.2 ? '❤️' : '🌸';
+      const left = Math.random() * 100;
+      const duration = 6 + Math.random() * 6;
+      const drift = (Math.random() * 120 - 60) + 'px';
+      const scale = (0.8 + Math.random() * 1.4).toFixed(2);
+      heart.style.left = left + 'vw';
+      heart.style.animationDuration = duration + 's';
+      heart.style.setProperty('--drift', drift);
+      heart.style.setProperty('--scale', scale);
+      document.body.appendChild(heart);
+      setTimeout(()=>heart.remove(), duration*1000);
+    }
+    setInterval(spawnHeart, 520);
+
+    // surprise burst
+    document.getElementById('surpriseBtn').onclick = ()=>{
+      for(let i=0;i<28;i++) setTimeout(spawnHeart, i*40);
+      alert("Happy Women’s Day, Marjona ❤️\n— Inomjon");
+    };
+
+    // modal gallery preview
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+    document.getElementById('photos').addEventListener('click', (e)=>{
+      const img = e.target.closest('img');
+      if(!img) return;
+      modalImg.src = img.src;
+      modal.classList.add('open');
+    });
+    document.getElementById('close').onclick = ()=> modal.classList.remove('open');
+    modal.onclick = (e)=> { if(e.target === modal) modal.classList.remove('open'); };
+  </script>
+</body>
+</html>
