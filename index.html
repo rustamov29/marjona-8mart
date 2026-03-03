@@ -362,16 +362,16 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-    // 🌸 Background floating hearts
 function spawnHeart() {
   const heart = document.createElement("div");
   heart.className = "heart";
-  heart.innerHTML = ["❤️","💋","💞","💞","💗","💘"];
+
+  const emojis = ["❤️","💋","💞","💗","💘"];
+  heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
 
   heart.style.left = Math.random() * window.innerWidth + "px";
   heart.style.setProperty("--drift", (Math.random() * 100 - 50) + "px");
   heart.style.setProperty("--scale", 0.8 + Math.random());
-
   heart.style.animationDuration = (6 + Math.random() * 4) + "s";
 
   document.body.appendChild(heart);
@@ -381,10 +381,10 @@ function spawnHeart() {
   }, 10000);
 }
 
-// har 500ms da yurak chiqaradi
 setInterval(spawnHeart, 500);
   </script>
 </body>
 </html>
+
 
 
