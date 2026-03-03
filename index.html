@@ -366,7 +366,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function spawnHeart() {
   const heart = document.createElement("div");
   heart.className = "heart";
-  heart.innerHTML = "❤️","💋","💞","💞","💗","💘";
+  heart.innerHTML = ["❤️","💋","💞","💞","💗","💘"];
 
   heart.style.left = Math.random() * window.innerWidth + "px";
   heart.style.setProperty("--drift", (Math.random() * 100 - 50) + "px");
@@ -386,4 +386,5 @@ setInterval(spawnHeart, 500);
   </script>
 </body>
 </html>
+
 
